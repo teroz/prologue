@@ -280,7 +280,7 @@
         
           <li class="md-nav__item">
   <a href="#another-example" class="md-nav__link">
-    Another example
+    Another Example
   </a>
   
 </li>
@@ -294,7 +294,7 @@
         
           <li class="md-nav__item">
   <a href="#more-examples" class="md-nav__link">
-    More examples
+    More Examples
   </a>
   
 </li>
@@ -312,6 +312,18 @@
   
 </nav>
     
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="qucikstart.md" title="QuickStart" class="md-nav__link">
+      QuickStart
+    </a>
   </li>
 
     
@@ -397,7 +409,7 @@
         
           <li class="md-nav__item">
   <a href="#another-example" class="md-nav__link">
-    Another example
+    Another Example
   </a>
   
 </li>
@@ -411,7 +423,7 @@
         
           <li class="md-nav__item">
   <a href="#more-examples" class="md-nav__link">
-    More examples
+    More Examples
   </a>
   
 </li>
@@ -443,7 +455,7 @@
 <h1 id="prologue">Prologue</h1>
 <p>What's past is prologue.</p>
 <h2 id="purpose">Purpose</h2>
-<p>Prologue is a Medium Scale Web Framework which is
+<p><code>Prologue</code> is a Medium Scale Web Framework which is
 ideal for building elegant and high performance
 web services.</p>
 <h2 id="feature">Feature</h2>
@@ -465,13 +477,20 @@ web services.</p>
 <li>Test Client(Using httpclient)</li>
 </ul>
 <h2 id="installation">Installation</h2>
+<p>First you should install <a href="https://nim-lang.org/">Nim</a> language which is an elegant and high performance language.Follow the <a href="https://nim-lang.org/install.html">instructions</a> and set environment variables correctly.</p>
+<p>Then you can use <code>nimble</code> command to install prologue.</p>
 <div class="codehilite"><pre><span></span><code>nimble install prologue
 </code></pre></div>
 
 
 <h2 id="usage">Usage</h2>
 <h3 id="hello-world">Hello World</h3>
-<div class="codehilite"><pre><span></span><code><span class="k">proc </span><span class="nf">hello</span><span class="o">*</span><span class="p">(</span><span class="n">ctx</span><span class="p">:</span> <span class="n">Context</span><span class="p">)</span> <span class="p">{.</span><span class="n">async</span><span class="p">.}</span> <span class="o">=</span>
+<div class="codehilite"><pre><span></span><code><span class="c"># app.nim</span>
+<span class="kn">import</span> <span class="n">asyncdispatch</span>
+<span class="kn">import</span> <span class="n">prologue</span>
+
+
+<span class="k">proc </span><span class="nf">hello</span><span class="o">*</span><span class="p">(</span><span class="n">ctx</span><span class="p">:</span> <span class="n">Context</span><span class="p">)</span> <span class="p">{.</span><span class="n">async</span><span class="p">.}</span> <span class="o">=</span>
   <span class="n">resp</span> <span class="s">&quot;&lt;h1&gt;Hello, Prologue!&lt;/h1&gt;&quot;</span>
 
 
@@ -482,9 +501,14 @@ web services.</p>
 </code></pre></div>
 
 
-<p>The server is running at localhost:8080.</p>
-<h3 id="another-example">Another example</h3>
-<div class="codehilite"><pre><span></span><code><span class="c"># Async Function</span>
+<p>Run <strong>app.nim</strong>.Now the server is running at localhost:8080.</p>
+<h3 id="another-example">Another Example</h3>
+<div class="codehilite"><pre><span></span><code><span class="c"># app.nim</span>
+<span class="kn">import</span> <span class="n">asyncdispatch</span>
+<span class="kn">import</span> <span class="n">prologue</span>
+
+
+<span class="c"># Async Function</span>
 <span class="k">proc </span><span class="nf">home</span><span class="o">*</span><span class="p">(</span><span class="n">ctx</span><span class="p">:</span> <span class="n">Context</span><span class="p">)</span> <span class="p">{.</span><span class="n">async</span><span class="p">.}</span> <span class="o">=</span>
   <span class="n">resp</span> <span class="s">&quot;&lt;h1&gt;Home&lt;/h1&gt;&quot;</span>
 
@@ -510,10 +534,11 @@ web services.</p>
 </code></pre></div>
 
 
+<p>Run <strong>app.nim</strong>.Now the server is running at localhost:8080.</p>
 <h3 id="urls-files">Urls Files</h3>
 <p><strong>views.nim</strong></p>
-<div class="codehilite"><pre><span></span><code><span class="kn">import</span> <span class="n">prologue</span>
-
+<div class="codehilite"><pre><span></span><code><span class="kn">import</span> <span class="n">asyncdispatch</span>
+<span class="kn">import</span> <span class="n">prologue</span>
 
 <span class="k">proc </span><span class="nf">index</span><span class="o">*</span><span class="p">(</span><span class="n">ctx</span><span class="p">:</span> <span class="n">Context</span><span class="p">)</span> <span class="p">{.</span><span class="n">async</span><span class="p">.}</span> <span class="o">=</span>
   <span class="n">resp</span> <span class="s">&quot;&lt;h1&gt;Hello, Prologue!&lt;/h1&gt;&quot;</span>
@@ -565,7 +590,8 @@ web services.</p>
 </code></pre></div>
 
 
-<h3 id="more-examples">More examples</h3>
+<p>Run <strong>app.nim</strong>.Now the server is running at localhost:8080.</p>
+<h3 id="more-examples">More Examples</h3>
 <ul>
 <li><a href="https://github.com/planety/prologue/tree/master/examples/helloworld">HelloWorld</a></li>
 <li><a href="https://github.com/planety/prologue/tree/master/examples/todolist">ToDoList</a></li>
