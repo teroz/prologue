@@ -440,8 +440,8 @@
                 
                 <p><img alt="Build Status" src="https://github.com/planety/prologue/workflows/Test%20Prologue/badge.svg" />
 <a href="https://dev.azure.com/xzsflywind/xlsx/_build/latest?definitionId=4&amp;branchName=master"><img alt="Build Status" src="https://dev.azure.com/xzsflywind/xlsx/_apis/build/status/planety.prologue?branchName=master" /></a>
-<img alt="Build Status" src="https://travis-ci.org/planety/prologue.svg?branch=master" /></p>
-<p><a href="https://opensource.org/licenses/BSD-3-Clause"><img alt="License: BSD-3-Clause" src="https://img.shields.io/github/license/planety/prologue" /></a>
+<img alt="Build Status" src="https://travis-ci.org/planety/prologue.svg?branch=master" />
+<a href="https://opensource.org/licenses/BSD-3-Clause"><img alt="License: BSD-3-Clause" src="https://img.shields.io/github/license/planety/prologue" /></a>
 <a href="https://github.com/planety/prologue/releases"><img alt="Version" src="https://img.shields.io/github/v/release/planety/prologue?include_prereleases" /></a></p>
 <h1 id="prologue">Prologue</h1>
 <p>What's past is prologue.</p>
@@ -449,7 +449,6 @@
 <p>Prologue is a Medium Scale Web Framework which is
 ideal for building elegant and high performance
 web services.</p>
-<hr />
 <h2 id="feature">Feature</h2>
 <ul>
 <li>Configure and Settings</li>
@@ -604,18 +603,6 @@ web services.</p>
 <span class="kd">var</span> <span class="n">app</span> <span class="o">=</span> <span class="n">initApp</span><span class="p">(</span><span class="n">settings</span> <span class="o">=</span> <span class="n">settings</span><span class="p">,</span> <span class="n">middlewares</span> <span class="o">=</span> <span class="o">@[]</span><span class="p">)</span>
 <span class="n">app</span><span class="p">.</span><span class="n">addRoute</span><span class="p">(</span><span class="n">urls</span><span class="p">.</span><span class="n">urlPatterns</span><span class="p">,</span> <span class="s">&quot;/todolist&quot;</span><span class="p">)</span>
 <span class="n">app</span><span class="p">.</span><span class="n">addRoute</span><span class="p">(</span><span class="s">&quot;/&quot;</span><span class="p">,</span> <span class="n">home</span><span class="p">,</span> <span class="n">HttpGet</span><span class="p">)</span>
-<span class="n">app</span><span class="p">.</span><span class="n">addRoute</span><span class="p">(</span><span class="s">&quot;/&quot;</span><span class="p">,</span> <span class="n">home</span><span class="p">,</span> <span class="n">HttpPost</span><span class="p">)</span>
-<span class="n">app</span><span class="p">.</span><span class="n">addRoute</span><span class="p">(</span><span class="s">&quot;/index.html&quot;</span><span class="p">,</span> <span class="n">index</span><span class="p">,</span> <span class="n">HttpGet</span><span class="p">)</span>
-<span class="n">app</span><span class="p">.</span><span class="n">addRoute</span><span class="p">(</span><span class="s">&quot;/prefix/home&quot;</span><span class="p">,</span> <span class="n">home</span><span class="p">,</span> <span class="n">HttpGet</span><span class="p">)</span>
-<span class="n">app</span><span class="p">.</span><span class="n">addRoute</span><span class="p">(</span><span class="s">&quot;/home&quot;</span><span class="p">,</span> <span class="n">home</span><span class="p">,</span> <span class="n">HttpGet</span><span class="p">)</span>
-<span class="n">app</span><span class="p">.</span><span class="n">addRoute</span><span class="p">(</span><span class="s">&quot;/hello&quot;</span><span class="p">,</span> <span class="n">hello</span><span class="p">,</span> <span class="n">HttpGet</span><span class="p">)</span>
-<span class="n">app</span><span class="p">.</span><span class="n">addRoute</span><span class="p">(</span><span class="s">&quot;/redirect&quot;</span><span class="p">,</span> <span class="n">testRedirect</span><span class="p">,</span> <span class="n">HttpGet</span><span class="p">)</span>
-<span class="n">app</span><span class="p">.</span><span class="n">addRoute</span><span class="p">(</span><span class="s">&quot;/login&quot;</span><span class="p">,</span> <span class="n">login</span><span class="p">,</span> <span class="n">HttpGet</span><span class="p">)</span>
-<span class="n">app</span><span class="p">.</span><span class="n">addRoute</span><span class="p">(</span><span class="s">&quot;/login&quot;</span><span class="p">,</span> <span class="n">do_login</span><span class="p">,</span> <span class="n">HttpPost</span><span class="p">)</span>
-<span class="c"># will match /hello/Nim and /hello/</span>
-<span class="n">app</span><span class="p">.</span><span class="n">addRoute</span><span class="p">(</span><span class="s">&quot;/hello/{name}&quot;</span><span class="p">,</span> <span class="n">helloName</span><span class="p">,</span> <span class="n">HttpGet</span><span class="p">)</span>
-<span class="n">app</span><span class="p">.</span><span class="n">addRoute</span><span class="p">(</span><span class="s">&quot;/multipart&quot;</span><span class="p">,</span> <span class="n">multiPart</span><span class="p">,</span> <span class="n">HttpGet</span><span class="p">)</span>
-<span class="n">app</span><span class="p">.</span><span class="n">addRoute</span><span class="p">(</span><span class="s">&quot;/multipart&quot;</span><span class="p">,</span> <span class="n">do_multiPart</span><span class="p">,</span> <span class="n">HttpPost</span><span class="p">)</span>
 <span class="n">app</span><span class="p">.</span><span class="n">run</span><span class="p">()</span>
 </code></pre></div>
 
