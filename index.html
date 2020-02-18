@@ -475,10 +475,9 @@ web services.</p>
   <span class="n">resp</span> <span class="s">&quot;&lt;h1&gt;Hello, Prologue!&lt;/h1&gt;&quot;</span>
 
 
-<span class="k">let</span> <span class="n">settings</span> <span class="o">=</span> <span class="n">newSettings</span><span class="p">(</span><span class="n">appName</span> <span class="o">=</span> <span class="s">&quot;StarLight&quot;</span><span class="p">,</span> <span class="n">debug</span> <span class="o">=</span> <span class="kp">true</span><span class="p">)</span>
-<span class="kd">var</span> <span class="n">app</span> <span class="o">=</span> <span class="n">initApp</span><span class="p">(</span><span class="n">settings</span> <span class="o">=</span> <span class="n">settings</span><span class="p">,</span> <span class="n">middlewares</span> <span class="o">=</span> <span class="o">@[</span><span class="n">stripPathMiddleware</span><span class="p">()</span><span class="o">]</span><span class="p">)</span>
-<span class="n">app</span><span class="p">.</span><span class="n">addRoute</span><span class="p">(</span><span class="s">&quot;/&quot;</span><span class="p">,</span> <span class="n">hello</span><span class="p">,</span> <span class="n">HttpGet</span><span class="p">)</span>
-<span class="n">app</span><span class="p">.</span><span class="n">addRoute</span><span class="p">(</span><span class="s">&quot;/hello&quot;</span><span class="p">,</span> <span class="n">hello</span><span class="p">,</span> <span class="n">HttpGet</span><span class="p">)</span>
+<span class="k">let</span> <span class="n">settings</span> <span class="o">=</span> <span class="n">newSettings</span><span class="p">()</span>
+<span class="kd">var</span> <span class="n">app</span> <span class="o">=</span> <span class="n">initApp</span><span class="p">(</span><span class="n">settings</span> <span class="o">=</span> <span class="n">settings</span><span class="p">)</span>
+<span class="n">app</span><span class="p">.</span><span class="n">addRoute</span><span class="p">(</span><span class="s">&quot;/&quot;</span><span class="p">,</span> <span class="n">hello</span><span class="p">)</span>
 <span class="n">app</span><span class="p">.</span><span class="n">run</span><span class="p">()</span>
 </code></pre></div>
 
@@ -486,17 +485,11 @@ web services.</p>
 <p>The server is running at localhost:8080.</p>
 <h3 id="another-example">Another example</h3>
 <div class="codehilite"><pre><span></span><code><span class="c"># Async Function</span>
-<span class="k">proc </span><span class="nf">hello</span><span class="o">*</span><span class="p">(</span><span class="n">ctx</span><span class="p">:</span> <span class="n">Context</span><span class="p">)</span> <span class="p">{.</span><span class="n">async</span><span class="p">.}</span> <span class="o">=</span>
-  <span class="n">resp</span> <span class="s">&quot;&lt;h1&gt;Hello, Prologue!&lt;/h1&gt;&quot;</span>
-
 <span class="k">proc </span><span class="nf">home</span><span class="o">*</span><span class="p">(</span><span class="n">ctx</span><span class="p">:</span> <span class="n">Context</span><span class="p">)</span> <span class="p">{.</span><span class="n">async</span><span class="p">.}</span> <span class="o">=</span>
   <span class="n">resp</span> <span class="s">&quot;&lt;h1&gt;Home&lt;/h1&gt;&quot;</span>
 
 <span class="k">proc </span><span class="nf">helloName</span><span class="o">*</span><span class="p">(</span><span class="n">ctx</span><span class="p">:</span> <span class="n">Context</span><span class="p">)</span> <span class="p">{.</span><span class="n">async</span><span class="p">.}</span> <span class="o">=</span>
-  <span class="n">resp</span> <span class="s">&quot;&lt;h1&gt;Hello, &quot;</span> <span class="o">&amp;</span> <span class="n">ctx</span><span class="p">.</span><span class="n">request</span><span class="p">.</span><span class="n">pathParams</span><span class="p">.</span><span class="n">getOrDefault</span><span class="p">(</span><span class="s">&quot;name&quot;</span><span class="p">,</span> <span class="s">&quot;Prologue&quot;</span><span class="p">)</span> <span class="o">&amp;</span> <span class="s">&quot;&lt;/h1&gt;&quot;</span>
-
-<span class="k">proc </span><span class="nf">testRedirect</span><span class="o">*</span><span class="p">(</span><span class="n">ctx</span><span class="p">:</span> <span class="n">Context</span><span class="p">)</span> <span class="p">{.</span><span class="n">async</span><span class="p">.}</span> <span class="o">=</span>
-  <span class="n">resp</span> <span class="n">redirect</span><span class="p">(</span><span class="s">&quot;/hello&quot;</span><span class="p">)</span>
+  <span class="n">resp</span> <span class="s">&quot;&lt;h1&gt;Hello, &quot;</span> <span class="o">&amp;</span> <span class="n">getPathParams</span><span class="p">(</span><span class="s">&quot;name&quot;</span><span class="p">,</span> <span class="s">&quot;Prologue&quot;</span><span class="p">)</span> <span class="o">&amp;</span> <span class="s">&quot;&lt;/h1&gt;&quot;</span>
 
 <span class="k">proc </span><span class="nf">login</span><span class="o">*</span><span class="p">(</span><span class="n">ctx</span><span class="p">:</span> <span class="n">Context</span><span class="p">)</span> <span class="p">{.</span><span class="n">async</span><span class="p">.}</span> <span class="o">=</span>
   <span class="n">resp</span> <span class="n">loginPage</span><span class="p">()</span>
@@ -507,10 +500,8 @@ web services.</p>
 
 <span class="k">let</span> <span class="n">settings</span> <span class="o">=</span> <span class="n">newSettings</span><span class="p">(</span><span class="n">appName</span> <span class="o">=</span> <span class="s">&quot;StarLight&quot;</span><span class="p">)</span>
 <span class="kd">var</span> <span class="n">app</span> <span class="o">=</span> <span class="n">initApp</span><span class="p">(</span><span class="n">settings</span> <span class="o">=</span> <span class="n">settings</span><span class="p">,</span> <span class="n">middlewares</span> <span class="o">=</span> <span class="o">@[</span><span class="n">debugRequestMiddleware</span><span class="o">]</span><span class="p">)</span>
-<span class="n">app</span><span class="p">.</span><span class="n">addRoute</span><span class="p">(</span><span class="s">&quot;/&quot;</span><span class="p">,</span> <span class="n">home</span><span class="p">,</span> <span class="n">HttpGet</span><span class="p">)</span>
-<span class="n">app</span><span class="p">.</span><span class="n">addRoute</span><span class="p">(</span><span class="s">&quot;/&quot;</span><span class="p">,</span> <span class="n">home</span><span class="p">,</span> <span class="n">HttpPost</span><span class="p">)</span>
+<span class="n">app</span><span class="p">.</span><span class="n">addRoute</span><span class="p">(</span><span class="s">&quot;/&quot;</span><span class="p">,</span> <span class="n">home</span><span class="p">,</span> <span class="o">@[</span><span class="n">HttpGet</span><span class="p">,</span> <span class="n">HttpPost</span><span class="o">]</span><span class="p">)</span>
 <span class="n">app</span><span class="p">.</span><span class="n">addRoute</span><span class="p">(</span><span class="s">&quot;/home&quot;</span><span class="p">,</span> <span class="n">home</span><span class="p">,</span> <span class="n">HttpGet</span><span class="p">)</span>
-<span class="n">app</span><span class="p">.</span><span class="n">addRoute</span><span class="p">(</span><span class="s">&quot;/hello&quot;</span><span class="p">,</span> <span class="n">hello</span><span class="p">,</span> <span class="n">HttpGet</span><span class="p">)</span>
 <span class="n">app</span><span class="p">.</span><span class="n">addRoute</span><span class="p">(</span><span class="s">&quot;/redirect&quot;</span><span class="p">,</span> <span class="n">testRedirect</span><span class="p">,</span> <span class="n">HttpGet</span><span class="p">)</span>
 <span class="n">app</span><span class="p">.</span><span class="n">addRoute</span><span class="p">(</span><span class="s">&quot;/login&quot;</span><span class="p">,</span> <span class="n">login</span><span class="p">,</span> <span class="n">HttpGet</span><span class="p">)</span>
 <span class="n">app</span><span class="p">.</span><span class="n">addRoute</span><span class="p">(</span><span class="s">&quot;/login&quot;</span><span class="p">,</span> <span class="n">do_login</span><span class="p">,</span> <span class="n">HttpPost</span><span class="p">,</span> <span class="o">@[</span><span class="n">debugRequestMiddleware</span><span class="o">]</span><span class="p">)</span>
@@ -524,38 +515,12 @@ web services.</p>
 <div class="codehilite"><pre><span></span><code><span class="kn">import</span> <span class="n">prologue</span>
 
 
-<span class="k">proc </span><span class="nf">hello</span><span class="o">*</span><span class="p">(</span><span class="n">ctx</span><span class="p">:</span> <span class="n">Context</span><span class="p">)</span> <span class="p">{.</span><span class="n">async</span><span class="p">.}</span> <span class="o">=</span>
+<span class="k">proc </span><span class="nf">index</span><span class="o">*</span><span class="p">(</span><span class="n">ctx</span><span class="p">:</span> <span class="n">Context</span><span class="p">)</span> <span class="p">{.</span><span class="n">async</span><span class="p">.}</span> <span class="o">=</span>
   <span class="n">resp</span> <span class="s">&quot;&lt;h1&gt;Hello, Prologue!&lt;/h1&gt;&quot;</span>
 
-<span class="k">proc </span><span class="nf">home</span><span class="o">*</span><span class="p">(</span><span class="n">ctx</span><span class="p">:</span> <span class="n">Context</span><span class="p">)</span> <span class="p">{.</span><span class="n">async</span><span class="p">.}</span> <span class="o">=</span>
+<span class="k">proc </span><span class="nf">hello</span><span class="o">*</span><span class="p">(</span><span class="n">ctx</span><span class="p">:</span> <span class="n">Context</span><span class="p">)</span> <span class="p">{.</span><span class="n">async</span><span class="p">.}</span> <span class="o">=</span>
   <span class="n">echo</span> <span class="n">ctx</span><span class="p">.</span><span class="n">request</span><span class="p">.</span><span class="n">queryParams</span><span class="p">.</span><span class="n">getOrDefault</span><span class="p">(</span><span class="s">&quot;name&quot;</span><span class="p">,</span> <span class="s">&quot;&quot;</span><span class="p">)</span>
   <span class="n">resp</span> <span class="s">&quot;&lt;h1&gt;Home&lt;/h1&gt;&quot;</span>
-
-<span class="k">proc </span><span class="nf">index</span><span class="o">*</span><span class="p">(</span><span class="n">ctx</span><span class="p">:</span> <span class="n">Context</span><span class="p">)</span> <span class="p">{.</span><span class="n">async</span><span class="p">.}</span> <span class="o">=</span>
-  <span class="n">await</span> <span class="n">ctx</span><span class="p">.</span><span class="n">staticFileResponse</span><span class="p">(</span><span class="s">&quot;index.html&quot;</span><span class="p">,</span> <span class="s">&quot;static&quot;</span><span class="p">)</span>
-
-<span class="k">proc </span><span class="nf">helloName</span><span class="o">*</span><span class="p">(</span><span class="n">ctx</span><span class="p">:</span> <span class="n">Context</span><span class="p">)</span> <span class="p">{.</span><span class="n">async</span><span class="p">.}</span> <span class="o">=</span>
-  <span class="n">echo</span> <span class="n">getPathParams</span><span class="p">(</span><span class="s">&quot;name&quot;</span><span class="p">)</span>
-  <span class="n">resp</span> <span class="s">&quot;&lt;h1&gt;Hello, &quot;</span> <span class="o">&amp;</span> <span class="n">getPathParams</span><span class="p">(</span><span class="s">&quot;name&quot;</span><span class="p">,</span> <span class="s">&quot;Prologue&quot;</span><span class="p">)</span> <span class="o">&amp;</span> <span class="s">&quot;&lt;/h1&gt;&quot;</span>
-
-<span class="k">proc </span><span class="nf">testRedirect</span><span class="o">*</span><span class="p">(</span><span class="n">ctx</span><span class="p">:</span> <span class="n">Context</span><span class="p">)</span> <span class="p">{.</span><span class="n">async</span><span class="p">.}</span> <span class="o">=</span>
-  <span class="n">resp</span> <span class="n">redirect</span><span class="p">(</span><span class="s">&quot;/hello&quot;</span><span class="p">)</span>
-
-<span class="k">proc </span><span class="nf">login</span><span class="o">*</span><span class="p">(</span><span class="n">ctx</span><span class="p">:</span> <span class="n">Context</span><span class="p">)</span> <span class="p">{.</span><span class="n">async</span><span class="p">.}</span> <span class="o">=</span>
-  <span class="n">resp</span> <span class="n">loginPage</span><span class="p">()</span>
-
-<span class="k">proc </span><span class="nf">do_login</span><span class="o">*</span><span class="p">(</span><span class="n">ctx</span><span class="p">:</span> <span class="n">Context</span><span class="p">)</span> <span class="p">{.</span><span class="n">async</span><span class="p">.}</span> <span class="o">=</span>
-  <span class="n">echo</span> <span class="s">&quot;-----------------------------------------------------&quot;</span>
-  <span class="n">echo</span> <span class="n">ctx</span><span class="p">.</span><span class="n">request</span><span class="p">.</span><span class="n">postParams</span>
-  <span class="n">echo</span> <span class="n">getPostParams</span><span class="p">(</span><span class="s">&quot;username&quot;</span><span class="p">,</span> <span class="s">&quot;&quot;</span><span class="p">)</span>
-  <span class="n">echo</span> <span class="n">getPostParams</span><span class="p">(</span><span class="s">&quot;password&quot;</span><span class="p">,</span> <span class="s">&quot;&quot;</span><span class="p">)</span>
-  <span class="n">resp</span> <span class="n">redirect</span><span class="p">(</span><span class="s">&quot;/hello/Nim&quot;</span><span class="p">)</span>
-
-<span class="k">proc </span><span class="nf">multiPart</span><span class="o">*</span><span class="p">(</span><span class="n">ctx</span><span class="p">:</span> <span class="n">Context</span><span class="p">)</span> <span class="p">{.</span><span class="n">async</span><span class="p">.}</span> <span class="o">=</span>
-  <span class="n">resp</span> <span class="n">multiPartPage</span><span class="p">()</span>
-
-<span class="k">proc </span><span class="nf">do_multiPart</span><span class="o">*</span><span class="p">(</span><span class="n">ctx</span><span class="p">:</span> <span class="n">Context</span><span class="p">)</span> <span class="p">{.</span><span class="n">async</span><span class="p">.}</span> <span class="o">=</span>
-  <span class="n">resp</span> <span class="n">redirect</span><span class="p">(</span><span class="s">&quot;/login&quot;</span><span class="p">)</span>
 </code></pre></div>
 
 
@@ -567,13 +532,9 @@ web services.</p>
 
 
 <span class="k">let</span> <span class="n">urlPatterns</span><span class="o">*</span> <span class="o">=</span> <span class="o">@[</span>
-  <span class="n">pattern</span><span class="p">(</span><span class="s">&quot;/&quot;</span><span class="p">,</span> <span class="n">home</span><span class="p">),</span>
-  <span class="n">pattern</span><span class="p">(</span><span class="s">&quot;/&quot;</span><span class="p">,</span> <span class="n">home</span><span class="p">,</span> <span class="n">HttpPost</span><span class="p">),</span>
-  <span class="n">pattern</span><span class="p">(</span><span class="s">&quot;/home&quot;</span><span class="p">,</span> <span class="n">home</span><span class="p">),</span>
-  <span class="n">pattern</span><span class="p">(</span><span class="s">&quot;/login&quot;</span><span class="p">,</span> <span class="n">login</span><span class="p">),</span>
-  <span class="n">pattern</span><span class="p">(</span><span class="s">&quot;/login&quot;</span><span class="p">,</span> <span class="n">do_login</span><span class="p">,</span> <span class="n">HttpPost</span><span class="p">),</span>
-  <span class="n">pattern</span><span class="p">(</span><span class="s">&quot;/redirect&quot;</span><span class="p">,</span> <span class="n">testRedirect</span><span class="p">),</span>
-  <span class="n">pattern</span><span class="p">(</span><span class="s">&quot;/multipart&quot;</span><span class="p">,</span> <span class="n">multipart</span><span class="p">)</span>
+  <span class="n">pattern</span><span class="p">(</span><span class="s">&quot;/&quot;</span><span class="p">,</span> <span class="n">index</span><span class="p">),</span>
+  <span class="n">pattern</span><span class="p">(</span><span class="s">&quot;/&quot;</span><span class="p">,</span> <span class="n">index</span><span class="p">,</span> <span class="n">HttpPost</span><span class="p">),</span>
+  <span class="n">pattern</span><span class="p">(</span><span class="s">&quot;/hello/{name}&quot;</span><span class="p">,</span> <span class="n">hello</span><span class="p">),</span>
 <span class="o">]</span>
 </code></pre></div>
 
@@ -598,8 +559,8 @@ web services.</p>
                 <span class="p">)</span>
 
 <span class="kd">var</span> <span class="n">app</span> <span class="o">=</span> <span class="n">initApp</span><span class="p">(</span><span class="n">settings</span> <span class="o">=</span> <span class="n">settings</span><span class="p">,</span> <span class="n">middlewares</span> <span class="o">=</span> <span class="o">@[]</span><span class="p">)</span>
-<span class="n">app</span><span class="p">.</span><span class="n">addRoute</span><span class="p">(</span><span class="n">urls</span><span class="p">.</span><span class="n">urlPatterns</span><span class="p">,</span> <span class="s">&quot;/todolist&quot;</span><span class="p">)</span>
-<span class="n">app</span><span class="p">.</span><span class="n">addRoute</span><span class="p">(</span><span class="s">&quot;/&quot;</span><span class="p">,</span> <span class="n">home</span><span class="p">,</span> <span class="n">HttpGet</span><span class="p">)</span>
+<span class="n">app</span><span class="p">.</span><span class="n">addRoute</span><span class="p">(</span><span class="n">urls</span><span class="p">.</span><span class="n">urlPatterns</span><span class="p">,</span> <span class="s">&quot;/api&quot;</span><span class="p">)</span>
+<span class="n">app</span><span class="p">.</span><span class="n">addRoute</span><span class="p">(</span><span class="s">&quot;/&quot;</span><span class="p">,</span> <span class="n">index</span><span class="p">,</span> <span class="n">HttpGet</span><span class="p">)</span>
 <span class="n">app</span><span class="p">.</span><span class="n">run</span><span class="p">()</span>
 </code></pre></div>
 
