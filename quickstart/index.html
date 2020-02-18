@@ -295,6 +295,8 @@
 
 <p>This is a very basic "Hello Prologue" example.Run this script, visit <a href="http://localhost:8080">http://localhost:8080</a> and you will
 see "Hello, Prologue!" in your browser! Here is how it works.</p>
+<p>First we should <code>import asyncdispatch</code> for supporting <code>async</code> function namely <code>async</code> pragma(<code>{.async.}</code>).Next we <code>import prologue</code> include all things we need in this example.</p>
+<p>Then let's look at <code>hello</code> function.It generates html or plain text or json or something else to our default http server(asynchttpserver). Function parameters <code>ctx</code> is of <code>Context</code> type.<code>Context</code> carry all things in every request.It includes <code>request</code> from http server and <code>response</code> which we transfer to http server Correspondingly and other useful attributes.In function body, we can find <code>resp</code>.<code>resp</code> is handy for generating response we need.It is equal to <code>ctx.response = initResponse("&lt;h1&gt;Hello, Prologue!&lt;/h1&gt;")</code>.</p>
                 
                   
                 
