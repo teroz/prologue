@@ -250,13 +250,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#docs" class="md-nav__link">
-    Docs
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#feature" class="md-nav__link">
     Feature
   </a>
@@ -295,6 +288,13 @@
           <li class="md-nav__item">
   <a href="#urls-files" class="md-nav__link">
     Urls Files
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#more-examples" class="md-nav__link">
+    More examples
   </a>
   
 </li>
@@ -367,13 +367,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#docs" class="md-nav__link">
-    Docs
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#feature" class="md-nav__link">
     Feature
   </a>
@@ -416,6 +409,13 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#more-examples" class="md-nav__link">
+    More examples
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -443,41 +443,38 @@
 <img alt="Build Status" src="https://travis-ci.org/planety/prologue.svg?branch=master" /></p>
 <p><a href="https://opensource.org/licenses/BSD-3-Clause"><img alt="License: BSD-3-Clause" src="https://img.shields.io/github/license/planety/prologue" /></a>
 <a href="https://github.com/planety/prologue/releases"><img alt="Version" src="https://img.shields.io/github/v/release/planety/prologue?include_prereleases" /></a></p>
-<h1 id="prologue">Prologue<a href="https://github.com/yglukhov/nimble-tag"><img alt="nimble" src="https://raw.githubusercontent.com/yglukhov/nimble-tag/master/nimble.png" /></a></h1>
+<h1 id="prologue">Prologue</h1>
 <p>What's past is prologue.</p>
-<h3 id="purpose">Purpose</h3>
-<p>It tends to be Medium scale Web Framework(May be Full-Stack without models or Orm)</p>
-<p>You can see our task assignment as below or join us.</p>
-<p>https://github.com/planety/BluePrint/blob/master/task.md</p>
-<h3 id="docs">Docs</h3>
-<p>Docs in https://planety.github.io/prologue</p>
-<h3 id="feature">Feature</h3>
+<h2 id="purpose">Purpose</h2>
+<p>Prologue is a Medium Scale Web Framework which is
+ideal for building elegant and high performance
+web services.</p>
+<hr />
+<h2 id="feature">Feature</h2>
 <ul>
-<li>High Performance Http 1.1/2.0 Server</li>
-<li>High Performance Websocket Server</li>
-<li>Http 2.0 Client</li>
-<li>Reloader</li>
 <li>Configure and Settings</li>
 <li>Context</li>
+<li>Params and Query Data</li>
+<li>Form Data</li>
 <li>Static Files</li>
 <li>Middlewares</li>
 <li>Simple Route</li>
-<li>Template(Using Karax Native or Using Nim Filter)</li>
-<li>Test Client(Using httpclient)</li>
+<li>Regex Route</li>
 <li>CORS Response</li>
 <li>Signing</li>
+<li>Cookie</li>
 <li>Session</li>
-<li>Authentication</li>
 <li>Cache</li>
-<li>Openapi</li>
+<li>Template(Using Karax Native or Using Nim Filter)</li>
+<li>Test Client(Using httpclient)</li>
 </ul>
-<h3 id="installation">Installation</h3>
+<h2 id="installation">Installation</h2>
 <div class="codehilite"><pre><span></span><code>nimble install prologue
 </code></pre></div>
 
 
-<h3 id="usage">Usage</h3>
-<h4 id="hello-world">Hello World</h4>
+<h2 id="usage">Usage</h2>
+<h3 id="hello-world">Hello World</h3>
 <div class="codehilite"><pre><span></span><code><span class="k">proc </span><span class="nf">hello</span><span class="o">*</span><span class="p">(</span><span class="n">ctx</span><span class="p">:</span> <span class="n">Context</span><span class="p">)</span> <span class="p">{.</span><span class="n">async</span><span class="p">.}</span> <span class="o">=</span>
   <span class="n">resp</span> <span class="s">&quot;&lt;h1&gt;Hello, Prologue!&lt;/h1&gt;&quot;</span>
 
@@ -491,7 +488,7 @@
 
 
 <p>The server is running at localhost:8080.</p>
-<h4 id="another-example">Another example</h4>
+<h3 id="another-example">Another example</h3>
 <div class="codehilite"><pre><span></span><code><span class="c"># Async Function</span>
 <span class="k">proc </span><span class="nf">hello</span><span class="o">*</span><span class="p">(</span><span class="n">ctx</span><span class="p">:</span> <span class="n">Context</span><span class="p">)</span> <span class="p">{.</span><span class="n">async</span><span class="p">.}</span> <span class="o">=</span>
   <span class="n">resp</span> <span class="s">&quot;&lt;h1&gt;Hello, Prologue!&lt;/h1&gt;&quot;</span>
@@ -526,7 +523,7 @@
 </code></pre></div>
 
 
-<h4 id="urls-files">Urls Files</h4>
+<h3 id="urls-files">Urls Files</h3>
 <p><strong>views.nim</strong></p>
 <div class="codehilite"><pre><span></span><code><span class="kn">import</span> <span class="n">prologue</span>
 
@@ -621,6 +618,13 @@
 <span class="n">app</span><span class="p">.</span><span class="n">addRoute</span><span class="p">(</span><span class="s">&quot;/multipart&quot;</span><span class="p">,</span> <span class="n">do_multiPart</span><span class="p">,</span> <span class="n">HttpPost</span><span class="p">)</span>
 <span class="n">app</span><span class="p">.</span><span class="n">run</span><span class="p">()</span>
 </code></pre></div>
+
+
+<h3 id="more-examples">More examples</h3>
+<ul>
+<li><a href="https://github.com/planety/prologue/tree/master/examples/helloworld">HelloWorld</a></li>
+<li><a href="https://github.com/planety/prologue/tree/master/examples/todolist">ToDoList</a></li>
+</ul>
                 
                   
                 
