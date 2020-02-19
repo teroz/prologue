@@ -335,7 +335,7 @@
 
 
 <span class="k">let</span> <span class="n">settings</span> <span class="o">=</span> <span class="n">newSettings</span><span class="p">()</span>
-<span class="kd">var</span> <span class="n">app</span> <span class="o">=</span> <span class="n">initApp</span><span class="p">(</span><span class="n">settings</span> <span class="o">=</span> <span class="n">settings</span><span class="p">)</span>
+<span class="kd">var</span> <span class="n">app</span> <span class="o">=</span> <span class="n">newApp</span><span class="p">(</span><span class="n">settings</span> <span class="o">=</span> <span class="n">settings</span><span class="p">)</span>
 <span class="n">app</span><span class="p">.</span><span class="n">addRoute</span><span class="p">(</span><span class="s">&quot;/&quot;</span><span class="p">,</span> <span class="n">hello</span><span class="p">)</span>
 <span class="n">app</span><span class="p">.</span><span class="n">run</span><span class="p">()</span>
 </code></pre></div>
@@ -344,7 +344,10 @@
 <p>This is a very basic "Hello Prologue" example.Run this script, visit <a href="http://localhost:8080">http://localhost:8080</a> and you will
 see "Hello, Prologue!" in your browser! Here is how it works.</p>
 <p>First we should <code>import asyncdispatch</code> for supporting <code>async</code> function namely <code>async</code> pragma(<code>{.async.}</code>).Next we <code>import prologue</code> include all things we need in this example.</p>
-<p>Then let's look at <code>hello</code> function.It generates html or plain text or json or something else to our default http server(asynchttpserver). Function parameters <code>ctx</code> is of <code>Context</code> type.<code>Context</code> carry all things in every request.It includes <code>request</code> from http server and <code>response</code> which we transfer to http server Correspondingly and other useful attributes.In function body, we can find <code>resp</code>.<code>resp</code> is handy for generating response we need.It is equal to <code>ctx.response = initResponse("&lt;h1&gt;Hello, Prologue!&lt;/h1&gt;")</code>.</p>
+<p>Then let's look at <code>hello</code> function. It generates html or plain text or json or something else to our default http server(asynchttpserver). Function parameters <code>ctx</code> is of <code>Context</code> type.<code>Context</code> carry all things in every request. It includes <code>request</code> from http server and <code>response</code> which we transfer to http server Correspondingly and other useful attributes. In function body, we can find <code>resp</code>.<code>resp</code> is handy for generating response we need. It is equal to <code>ctx.response = initResponse("&lt;h1&gt;Hello, Prologue!&lt;/h1&gt;")</code>.</p>
+<p>Next let's configure our application.For this basic
+example, we will use default settings.You can specify parameters of <code>newSettings</code> of course.You can change to other <code>port</code> or set <code>debug</code> flag.</p>
+<p>Next let's add route to our application.Finally just <code>run</code> our application.</p>
                 
                   
                 

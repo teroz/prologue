@@ -544,7 +544,7 @@ web services.</p>
 
 
 <span class="k">let</span> <span class="n">settings</span> <span class="o">=</span> <span class="n">newSettings</span><span class="p">()</span>
-<span class="kd">var</span> <span class="n">app</span> <span class="o">=</span> <span class="n">initApp</span><span class="p">(</span><span class="n">settings</span> <span class="o">=</span> <span class="n">settings</span><span class="p">)</span>
+<span class="kd">var</span> <span class="n">app</span> <span class="o">=</span> <span class="n">newApp</span><span class="p">(</span><span class="n">settings</span> <span class="o">=</span> <span class="n">settings</span><span class="p">)</span>
 <span class="n">app</span><span class="p">.</span><span class="n">addRoute</span><span class="p">(</span><span class="s">&quot;/&quot;</span><span class="p">,</span> <span class="n">hello</span><span class="p">)</span>
 <span class="n">app</span><span class="p">.</span><span class="n">run</span><span class="p">()</span>
 </code></pre></div>
@@ -572,7 +572,7 @@ web services.</p>
 
 
 <span class="k">let</span> <span class="n">settings</span> <span class="o">=</span> <span class="n">newSettings</span><span class="p">(</span><span class="n">appName</span> <span class="o">=</span> <span class="s">&quot;StarLight&quot;</span><span class="p">)</span>
-<span class="kd">var</span> <span class="n">app</span> <span class="o">=</span> <span class="n">initApp</span><span class="p">(</span><span class="n">settings</span> <span class="o">=</span> <span class="n">settings</span><span class="p">,</span> <span class="n">middlewares</span> <span class="o">=</span> <span class="o">@[</span><span class="n">debugRequestMiddleware</span><span class="o">]</span><span class="p">)</span>
+<span class="kd">var</span> <span class="n">app</span> <span class="o">=</span> <span class="n">newApp</span><span class="p">(</span><span class="n">settings</span> <span class="o">=</span> <span class="n">settings</span><span class="p">,</span> <span class="n">middlewares</span> <span class="o">=</span> <span class="o">@[</span><span class="n">debugRequestMiddleware</span><span class="o">]</span><span class="p">)</span>
 <span class="n">app</span><span class="p">.</span><span class="n">addRoute</span><span class="p">(</span><span class="s">&quot;/&quot;</span><span class="p">,</span> <span class="n">home</span><span class="p">,</span> <span class="o">@[</span><span class="n">HttpGet</span><span class="p">,</span> <span class="n">HttpPost</span><span class="o">]</span><span class="p">)</span>
 <span class="n">app</span><span class="p">.</span><span class="n">addRoute</span><span class="p">(</span><span class="s">&quot;/home&quot;</span><span class="p">,</span> <span class="n">home</span><span class="p">,</span> <span class="n">HttpGet</span><span class="p">)</span>
 <span class="n">app</span><span class="p">.</span><span class="n">addRoute</span><span class="p">(</span><span class="s">&quot;/redirect&quot;</span><span class="p">,</span> <span class="n">testRedirect</span><span class="p">,</span> <span class="n">HttpGet</span><span class="p">)</span>
@@ -632,7 +632,7 @@ web services.</p>
                 <span class="n">secretKey</span> <span class="o">=</span> <span class="n">SecretKey</span><span class="p">(</span><span class="n">env</span><span class="p">.</span><span class="n">getOrDefault</span><span class="p">(</span><span class="s">&quot;secretKey&quot;</span><span class="p">,</span> <span class="s">&quot;&quot;</span><span class="p">))</span>
                 <span class="p">)</span>
 
-<span class="kd">var</span> <span class="n">app</span> <span class="o">=</span> <span class="n">initApp</span><span class="p">(</span><span class="n">settings</span> <span class="o">=</span> <span class="n">settings</span><span class="p">,</span> <span class="n">middlewares</span> <span class="o">=</span> <span class="o">@[]</span><span class="p">)</span>
+<span class="kd">var</span> <span class="n">app</span> <span class="o">=</span> <span class="n">newApp</span><span class="p">(</span><span class="n">settings</span> <span class="o">=</span> <span class="n">settings</span><span class="p">,</span> <span class="n">middlewares</span> <span class="o">=</span> <span class="o">@[]</span><span class="p">)</span>
 <span class="n">app</span><span class="p">.</span><span class="n">addRoute</span><span class="p">(</span><span class="n">urls</span><span class="p">.</span><span class="n">urlPatterns</span><span class="p">,</span> <span class="s">&quot;/api&quot;</span><span class="p">)</span>
 <span class="n">app</span><span class="p">.</span><span class="n">addRoute</span><span class="p">(</span><span class="s">&quot;/&quot;</span><span class="p">,</span> <span class="n">index</span><span class="p">,</span> <span class="n">HttpGet</span><span class="p">)</span>
 <span class="n">app</span><span class="p">.</span><span class="n">run</span><span class="p">()</span>
