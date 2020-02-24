@@ -536,7 +536,6 @@ web services.</p>
 <h2 id="usage">Usage</h2>
 <h3 id="hello-world">Hello World</h3>
 <div class="codehilite"><pre><span></span><code><span class="c"># app.nim</span>
-<span class="kn">import</span> <span class="n">asyncdispatch</span>
 <span class="kn">import</span> <span class="n">prologue</span>
 
 
@@ -554,7 +553,6 @@ web services.</p>
 <p>Run <strong>app.nim</strong>.Now the server is running at localhost:8080.</p>
 <h3 id="another-example">Another Example</h3>
 <div class="codehilite"><pre><span></span><code><span class="c"># app.nim</span>
-<span class="kn">import</span> <span class="n">asyncdispatch</span>
 <span class="kn">import</span> <span class="n">prologue</span>
 
 
@@ -587,8 +585,7 @@ web services.</p>
 <p>Run <strong>app.nim</strong>.Now the server is running at localhost:8080.</p>
 <h3 id="urls-files">URLs Files</h3>
 <p><strong>views.nim</strong></p>
-<div class="codehilite"><pre><span></span><code><span class="kn">import</span> <span class="n">asyncdispatch</span>
-<span class="kn">import</span> <span class="n">prologue</span>
+<div class="codehilite"><pre><span></span><code><span class="kn">import</span> <span class="n">prologue</span>
 
 <span class="k">proc </span><span class="nf">index</span><span class="o">*</span><span class="p">(</span><span class="n">ctx</span><span class="p">:</span> <span class="n">Context</span><span class="p">)</span> <span class="p">{.</span><span class="n">async</span><span class="p">.}</span> <span class="o">=</span>
   <span class="n">resp</span> <span class="s">&quot;&lt;h1&gt;Hello, Prologue!&lt;/h1&gt;&quot;</span>
