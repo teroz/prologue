@@ -518,6 +518,7 @@ web services.</p>
 <li>Simple Route</li>
 <li>Regex Route</li>
 <li>CORS Response</li>
+<li>Exception Handler</li>
 <li>Signing</li>
 <li>Cookie</li>
 <li>Session</li>
@@ -587,6 +588,7 @@ web services.</p>
 <p><strong>views.nim</strong></p>
 <div class="codehilite"><pre><span></span><code><span class="kn">import</span> <span class="n">prologue</span>
 
+
 <span class="k">proc </span><span class="nf">index</span><span class="o">*</span><span class="p">(</span><span class="n">ctx</span><span class="p">:</span> <span class="n">Context</span><span class="p">)</span> <span class="p">{.</span><span class="n">async</span><span class="p">.}</span> <span class="o">=</span>
   <span class="n">resp</span> <span class="s">&quot;&lt;h1&gt;Hello, Prologue!&lt;/h1&gt;&quot;</span>
 
@@ -598,7 +600,6 @@ web services.</p>
 
 <p><strong>URLs.nim</strong></p>
 <div class="codehilite"><pre><span></span><code><span class="kn">import</span> <span class="n">prologue</span>
-
 
 <span class="kn">import</span> <span class="n">views</span>
 
@@ -614,15 +615,13 @@ web services.</p>
 <p><strong>app.nim</strong></p>
 <div class="codehilite"><pre><span></span><code><span class="kn">import</span> <span class="n">prologue</span>
 
-
 <span class="kn">import</span> <span class="n">views</span><span class="p">,</span> <span class="n">urls</span>
+
 
 <span class="c"># read environment variables from file</span>
 <span class="c"># Make sure &quot;.env&quot; in your &quot;.gitignore&quot; file.</span>
 <span class="k">let</span> 
   <span class="n">env</span> <span class="o">=</span> <span class="n">loadPrologueEnv</span><span class="p">(</span><span class="s">&quot;.env&quot;</span><span class="p">)</span>
-
-<span class="k">let</span>
   <span class="n">settings</span> <span class="o">=</span> <span class="n">newSettings</span><span class="p">(</span><span class="n">appName</span> <span class="o">=</span> <span class="n">env</span><span class="p">.</span><span class="n">getOrDefault</span><span class="p">(</span><span class="s">&quot;appName&quot;</span><span class="p">,</span> <span class="s">&quot;Prologue&quot;</span><span class="p">),</span>
                 <span class="n">debug</span> <span class="o">=</span> <span class="n">env</span><span class="p">.</span><span class="n">getOrDefault</span><span class="p">(</span><span class="s">&quot;debug&quot;</span><span class="p">,</span> <span class="kp">true</span><span class="p">),</span> 
                 <span class="n">port</span> <span class="o">=</span> <span class="n">Port</span><span class="p">(</span><span class="n">env</span><span class="p">.</span><span class="n">getOrDefault</span><span class="p">(</span><span class="s">&quot;port&quot;</span><span class="p">,</span> <span class="mi">8080</span><span class="p">)),</span>
