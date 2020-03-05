@@ -309,6 +309,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#parameters-route" class="md-nav__link">
+    Parameters Route
+  </a>
+  
+</li>
+      
       
       
       
@@ -371,6 +378,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#parameters-route" class="md-nav__link">
+    Parameters Route
+  </a>
+  
+</li>
+      
       
       
       
@@ -391,7 +405,40 @@
                 <h1 id="route">Route</h1>
 <p>Route is the core of web framework.</p>
 <h2 id="static-route">Static Route</h2>
-<p><code>Prologue</code> support static route.</p>
+<p>Register handler <code>hello</code> by specifying path, httpMethod and middlewares.</p>
+<p>Default http method is <code>HttpGet</code>.If you register a handler with <code>HttpGet</code>, <code>Prologue</code> will automatically register <code>HttpHead</code> for this handler.</p>
+<div class="codehilite"><pre><span></span><code><span class="c"># handler</span>
+<span class="k">proc </span><span class="nf">hello</span><span class="o">*</span><span class="p">(</span><span class="n">ctx</span><span class="p">:</span> <span class="n">Context</span><span class="p">)</span> <span class="p">{.</span><span class="n">async</span><span class="p">.}</span> <span class="o">=</span>
+  <span class="n">resp</span> <span class="s">&quot;&lt;h1&gt;Hello, Prologue!&lt;/h1&gt;&quot;</span>
+
+<span class="n">app</span><span class="p">.</span><span class="n">addRoute</span><span class="p">(</span><span class="s">&quot;/hello&quot;</span><span class="p">,</span> <span class="n">hello</span><span class="p">)</span>
+</code></pre></div>
+
+
+<p>You can also use <code>seq[httpMetod]</code> to register same handler but support different http methods.</p>
+<div class="codehilite"><pre><span></span><code><span class="c"># handler</span>
+<span class="k">proc </span><span class="nf">hello</span><span class="o">*</span><span class="p">(</span><span class="n">ctx</span><span class="p">:</span> <span class="n">Context</span><span class="p">)</span> <span class="p">{.</span><span class="n">async</span><span class="p">.}</span> <span class="o">=</span>
+  <span class="n">resp</span> <span class="s">&quot;&lt;h1&gt;Hello, Prologue!&lt;/h1&gt;&quot;</span>
+
+<span class="n">app</span><span class="p">.</span><span class="n">addRoute</span><span class="p">(</span><span class="s">&quot;/hello&quot;</span><span class="p">,</span> <span class="n">hello</span><span class="p">,</span> <span class="o">@[</span><span class="n">HttpGet</span><span class="p">,</span> <span class="n">HttpPost</span><span class="o">]</span><span class="p">)</span>
+</code></pre></div>
+
+
+<h2 id="parameters-route">Parameters Route</h2>
+<p><code>Prologue</code> support parameters route.</p>
+<div class="codehilite"><pre><span></span><code><span class="k">proc </span><span class="nf">helloName</span><span class="o">*</span><span class="p">(</span><span class="n">ctx</span><span class="p">:</span> <span class="n">Context</span><span class="p">)</span> <span class="p">{.</span><span class="n">async</span><span class="p">.}</span> <span class="o">=</span>
+  <span class="n">resp</span> <span class="s">&quot;&lt;h1&gt;Hello, &quot;</span> <span class="o">&amp;</span> <span class="n">ctx</span><span class="p">.</span><span class="n">getPathParams</span><span class="p">(</span><span class="s">&quot;name&quot;</span><span class="p">,</span> <span class="s">&quot;Prologue&quot;</span><span class="p">)</span> <span class="o">&amp;</span> <span class="s">&quot;&lt;/h1&gt;&quot;</span>
+
+<span class="n">app</span><span class="p">.</span><span class="n">addRoute</span><span class="p">(</span><span class="s">&quot;/hello/{name}&quot;</span><span class="p">,</span> <span class="n">helloName</span><span class="p">,</span> <span class="n">HttpGet</span><span class="p">)</span>
+</code></pre></div>
+
+
+<div class="codehilite"><pre><span></span><code><span class="c"># handler</span>
+<span class="k">proc </span><span class="nf">helloName</span><span class="o">*</span><span class="p">(</span><span class="n">ctx</span><span class="p">:</span> <span class="n">Context</span><span class="p">)</span> <span class="p">{.</span><span class="n">async</span><span class="p">.}</span> <span class="o">=</span>
+  <span class="n">resp</span> <span class="s">&quot;&lt;h1&gt;Hello, &quot;</span> <span class="o">&amp;</span> <span class="n">ctx</span><span class="p">.</span><span class="n">getPathParams</span><span class="p">(</span><span class="s">&quot;name&quot;</span><span class="p">,</span> <span class="s">&quot;Prologue&quot;</span><span class="p">)</span> <span class="o">&amp;</span> <span class="s">&quot;&lt;/h1&gt;&quot;</span>
+
+<span class="n">app</span><span class="p">.</span><span class="n">addRoute</span><span class="p">(</span><span class="s">&quot;/hello/{name}&quot;</span><span class="p">,</span> <span class="n">helloName</span><span class="p">,</span> <span class="n">HttpGet</span><span class="p">)</span>
+</code></pre></div>
                 
                   
                 
