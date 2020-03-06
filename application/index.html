@@ -273,6 +273,47 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#create-a-prologue-object" class="md-nav__link">
+    Create a Prologue object
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#settings" class="md-nav__link">
+    Settings
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#middlewares" class="md-nav__link">
+    Middlewares
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#startup-and-shutup" class="md-nav__link">
+    Startup and ShutUp
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#error-handler" class="md-nav__link">
+    Error Handler
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
       
       
       
@@ -383,6 +424,47 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#create-a-prologue-object" class="md-nav__link">
+    Create a Prologue object
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#settings" class="md-nav__link">
+    Settings
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#middlewares" class="md-nav__link">
+    Middlewares
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#startup-and-shutup" class="md-nav__link">
+    Startup and ShutUp
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#error-handler" class="md-nav__link">
+    Error Handler
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
       
       
       
@@ -414,6 +496,32 @@
     <span class="n">shutdown</span><span class="o">*</span><span class="p">:</span> <span class="kt">seq</span><span class="o">[</span><span class="n">Event</span><span class="o">]</span>
     <span class="n">errorHandlerTable</span><span class="o">*</span><span class="p">:</span> <span class="n">ErrorHandlerTable</span>
 </code></pre></div>
+
+
+<h2 id="create-a-prologue-object">Create a Prologue object</h2>
+<p>Use <code>newApp</code> to get Prologue instance.</p>
+<div class="codehilite"><pre><span></span><code><span class="k">proc </span><span class="nf">newApp</span><span class="o">*</span><span class="p">(</span><span class="n">settings</span><span class="p">:</span> <span class="n">Settings</span><span class="p">,</span> <span class="n">middlewares</span><span class="p">:</span> <span class="kt">seq</span><span class="o">[</span><span class="n">HandlerAsync</span><span class="o">]</span> <span class="o">=</span> <span class="o">@[]</span><span class="p">,</span>
+    <span class="n">startup</span><span class="p">:</span> <span class="kt">seq</span><span class="o">[</span><span class="n">Event</span><span class="o">]</span> <span class="o">=</span> <span class="o">@[]</span><span class="p">,</span> <span class="n">shutdown</span><span class="p">:</span> <span class="kt">seq</span><span class="o">[</span><span class="n">Event</span><span class="o">]</span> <span class="o">=</span> <span class="o">@[]</span><span class="p">,</span>
+        <span class="n">errorHandlerTable</span> <span class="o">=</span> <span class="p">{</span><span class="n">Http404</span><span class="p">:</span> <span class="n">default404Handler</span><span class="p">,</span>
+            <span class="n">Http500</span><span class="p">:</span> <span class="n">default500Handler</span><span class="p">}.</span><span class="n">newErrorHandlerTable</span><span class="p">)</span>
+</code></pre></div>
+
+
+<h3 id="settings">Settings</h3>
+<p>Use <code>newSettings</code> to create application settings.</p>
+<h3 id="middlewares">Middlewares</h3>
+<p>Register <code>middlewares</code> for the whole application.The middlewares will 
+apply to every handler.</p>
+<h3 id="startup-and-shutup">Startup and ShutUp</h3>
+<p>Register event for startup and shutup.Support both sync and async proc.</p>
+<div class="codehilite"><pre><span></span><code><span class="k">type</span>
+  <span class="n">AsyncEvent</span><span class="o">*</span> <span class="o">=</span> <span class="k">proc</span><span class="p">():</span> <span class="n">Future</span><span class="o">[</span><span class="n">void</span><span class="o">]</span> <span class="p">{.</span><span class="n">closure</span><span class="p">,</span> <span class="n">gcsafe</span><span class="p">.}</span>
+  <span class="n">SyncEvent</span><span class="o">*</span> <span class="o">=</span> <span class="k">proc</span><span class="p">()</span> <span class="p">{.</span><span class="n">closure</span><span class="p">,</span> <span class="n">gcsafe</span><span class="p">.}</span>
+</code></pre></div>
+
+
+<h3 id="error-handler">Error Handler</h3>
+<p>Map status code to error handler.</p>
                 
                   
                 
