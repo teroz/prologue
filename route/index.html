@@ -314,6 +314,19 @@
     Parameters Route
   </a>
   
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#regex-route" class="md-nav__link">
+    Regex Route
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
       
@@ -383,6 +396,19 @@
     Parameters Route
   </a>
   
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#regex-route" class="md-nav__link">
+    Regex Route
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
       
@@ -425,7 +451,7 @@
 
 
 <h2 id="parameters-route">Parameters Route</h2>
-<p><code>Prologue</code> support parameters route.</p>
+<p><code>Prologue</code> support parameters route.You can use <code>getPathParams</code> to get name argument.</p>
 <div class="codehilite"><pre><span></span><code><span class="k">proc </span><span class="nf">helloName</span><span class="o">*</span><span class="p">(</span><span class="n">ctx</span><span class="p">:</span> <span class="n">Context</span><span class="p">)</span> <span class="p">{.</span><span class="n">async</span><span class="p">.}</span> <span class="o">=</span>
   <span class="n">resp</span> <span class="s">&quot;&lt;h1&gt;Hello, &quot;</span> <span class="o">&amp;</span> <span class="n">ctx</span><span class="p">.</span><span class="n">getPathParams</span><span class="p">(</span><span class="s">&quot;name&quot;</span><span class="p">,</span> <span class="s">&quot;Prologue&quot;</span><span class="p">)</span> <span class="o">&amp;</span> <span class="s">&quot;&lt;/h1&gt;&quot;</span>
 
@@ -433,11 +459,12 @@
 </code></pre></div>
 
 
-<div class="codehilite"><pre><span></span><code><span class="c"># handler</span>
-<span class="k">proc </span><span class="nf">helloName</span><span class="o">*</span><span class="p">(</span><span class="n">ctx</span><span class="p">:</span> <span class="n">Context</span><span class="p">)</span> <span class="p">{.</span><span class="n">async</span><span class="p">.}</span> <span class="o">=</span>
-  <span class="n">resp</span> <span class="s">&quot;&lt;h1&gt;Hello, &quot;</span> <span class="o">&amp;</span> <span class="n">ctx</span><span class="p">.</span><span class="n">getPathParams</span><span class="p">(</span><span class="s">&quot;name&quot;</span><span class="p">,</span> <span class="s">&quot;Prologue&quot;</span><span class="p">)</span> <span class="o">&amp;</span> <span class="s">&quot;&lt;/h1&gt;&quot;</span>
+<h3 id="regex-route">Regex Route</h3>
+<p><code>Prologue</code> support regex route.You can use <code>getPathParams</code> to get name argument.</p>
+<div class="codehilite"><pre><span></span><code><span class="k">proc </span><span class="nf">articles</span><span class="o">*</span><span class="p">(</span><span class="n">ctx</span><span class="p">:</span> <span class="n">Context</span><span class="p">)</span> <span class="p">{.</span><span class="n">async</span><span class="p">.}</span> <span class="o">=</span>
+  <span class="n">resp</span> <span class="o">$</span><span class="n">ctx</span><span class="p">.</span><span class="n">getPathParams</span><span class="p">(</span><span class="s">&quot;num&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
 
-<span class="n">app</span><span class="p">.</span><span class="n">addRoute</span><span class="p">(</span><span class="s">&quot;/hello/{name}&quot;</span><span class="p">,</span> <span class="n">helloName</span><span class="p">,</span> <span class="n">HttpGet</span><span class="p">)</span>
+<span class="n">app</span><span class="p">.</span><span class="n">addRoute</span><span class="p">(</span><span class="s">re&quot;/post(?P&lt;num&gt;[\d]+)&quot;</span><span class="p">,</span> <span class="n">articles</span><span class="p">,</span> <span class="n">HttpGet</span><span class="p">)</span>
 </code></pre></div>
                 
                   
