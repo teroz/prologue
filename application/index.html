@@ -245,6 +245,8 @@
     
     <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
     
+      
+    
     
       <label class="md-nav__link md-nav__link--active" for="__toc">
         Application
@@ -258,13 +260,15 @@
 <nav class="md-nav md-nav--secondary">
   
   
+    
+  
   
     <label class="md-nav__title" for="__toc">Table of contents</label>
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#application" class="md-nav__link">
-    application
+  <a href="#prologue-object" class="md-nav__link">
+    Prologue Object
   </a>
   
 </li>
@@ -286,7 +290,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../requests/" title="Requests" class="md-nav__link">
+    <a href="../request/" title="Requests" class="md-nav__link">
       Requests
     </a>
   </li>
@@ -300,6 +304,18 @@
   <li class="md-nav__item">
     <a href="../response/" title="Response" class="md-nav__link">
       Response
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../context/" title="Context" class="md-nav__link">
+      Context
     </a>
   </li>
 
@@ -354,13 +370,15 @@
 <nav class="md-nav md-nav--secondary">
   
   
+    
+  
   
     <label class="md-nav__title" for="__toc">Table of contents</label>
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#application" class="md-nav__link">
-    application
+  <a href="#prologue-object" class="md-nav__link">
+    Prologue Object
   </a>
   
 </li>
@@ -382,9 +400,20 @@
               
                 
                 
-                  <h1>Application</h1>
-                
-                <h3 id="application">application</h3>
+                <h1 id="application">application</h1>
+<h2 id="prologue-object">Prologue Object</h2>
+<p>Prologue object</p>
+<div class="codehilite"><pre><span></span><code><span class="k">type</span>
+  <span class="n">Prologue</span><span class="o">*</span> <span class="o">=</span> <span class="k">ref</span> <span class="k">object</span>
+    <span class="n">settings</span><span class="o">*</span><span class="p">:</span> <span class="n">Settings</span>
+    <span class="n">router</span><span class="o">*</span><span class="p">:</span> <span class="n">Router</span>
+    <span class="n">reversedRouter</span><span class="o">*</span><span class="p">:</span> <span class="n">ReversedRouter</span>
+    <span class="n">reRouter</span><span class="o">*</span><span class="p">:</span> <span class="n">ReRouter</span>
+    <span class="n">middlewares</span><span class="o">*</span><span class="p">:</span> <span class="kt">seq</span><span class="o">[</span><span class="n">HandlerAsync</span><span class="o">]</span>
+    <span class="n">startup</span><span class="o">*</span><span class="p">:</span> <span class="kt">seq</span><span class="o">[</span><span class="n">Event</span><span class="o">]</span>
+    <span class="n">shutdown</span><span class="o">*</span><span class="p">:</span> <span class="kt">seq</span><span class="o">[</span><span class="n">Event</span><span class="o">]</span>
+    <span class="n">errorHandlerTable</span><span class="o">*</span><span class="p">:</span> <span class="n">ErrorHandlerTable</span>
+</code></pre></div>
                 
                   
                 
@@ -421,7 +450,7 @@
           </a>
         
         
-          <a href="../requests/" title="Requests" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+          <a href="../request/" title="Requests" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
             <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
               <span class="md-flex__ellipsis">
                 <span class="md-footer-nav__direction">
