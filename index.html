@@ -542,6 +542,7 @@ web services.</p>
 <li>Cache</li>
 <li>URL Building</li>
 <li>Authentication</li>
+<li>i18n</li>
 <li>Minimal OpenApi support</li>
 <li>Template(Using Karax Native or Using Nim Filter)</li>
 <li>Test Client(Using httpclient)</li>
@@ -574,6 +575,7 @@ web services.</p>
 <h3 id="another-example">Another Example</h3>
 <div class="codehilite"><pre><span></span><code><span class="c"># app.nim</span>
 <span class="kn">import</span> <span class="n">prologue</span>
+<span class="kn">import</span> <span class="n">prologue</span><span class="o">/</span><span class="n">middlewares</span><span class="o">/</span><span class="n">middlewares</span>
 
 
 <span class="c"># Async Function</span>
@@ -645,10 +647,10 @@ web services.</p>
                 <span class="n">debug</span> <span class="o">=</span> <span class="n">env</span><span class="p">.</span><span class="n">getOrDefault</span><span class="p">(</span><span class="s">&quot;debug&quot;</span><span class="p">,</span> <span class="kp">true</span><span class="p">),</span> 
                 <span class="n">port</span> <span class="o">=</span> <span class="n">Port</span><span class="p">(</span><span class="n">env</span><span class="p">.</span><span class="n">getOrDefault</span><span class="p">(</span><span class="s">&quot;port&quot;</span><span class="p">,</span> <span class="mi">8080</span><span class="p">)),</span>
                 <span class="n">staticDir</span> <span class="o">=</span> <span class="n">env</span><span class="p">.</span><span class="n">get</span><span class="p">(</span><span class="s">&quot;staticDir&quot;</span><span class="p">),</span>
-                <span class="n">secretKey</span> <span class="o">=</span> <span class="n">SecretKey</span><span class="p">(</span><span class="n">env</span><span class="p">.</span><span class="n">getOrDefault</span><span class="p">(</span><span class="s">&quot;secretKey&quot;</span><span class="p">,</span> <span class="s">&quot;&quot;</span><span class="p">))</span>
+                <span class="n">secretKey</span> <span class="o">=</span> <span class="n">env</span><span class="p">.</span><span class="n">getOrDefault</span><span class="p">(</span><span class="s">&quot;secretKey&quot;</span><span class="p">,</span> <span class="s">&quot;&quot;</span><span class="p">)</span>
                 <span class="p">)</span>
 
-<span class="kd">var</span> <span class="n">app</span> <span class="o">=</span> <span class="n">newApp</span><span class="p">(</span><span class="n">settings</span> <span class="o">=</span> <span class="n">settings</span><span class="p">,</span> <span class="n">middlewares</span> <span class="o">=</span> <span class="o">@[]</span><span class="p">)</span>
+<span class="kd">var</span> <span class="n">app</span> <span class="o">=</span> <span class="n">newApp</span><span class="p">(</span><span class="n">settings</span> <span class="o">=</span> <span class="n">settings</span><span class="p">)</span>
 <span class="n">app</span><span class="p">.</span><span class="n">addRoute</span><span class="p">(</span><span class="n">urls</span><span class="p">.</span><span class="n">urlPatterns</span><span class="p">,</span> <span class="s">&quot;/api&quot;</span><span class="p">)</span>
 <span class="n">app</span><span class="p">.</span><span class="n">addRoute</span><span class="p">(</span><span class="s">&quot;/&quot;</span><span class="p">,</span> <span class="n">index</span><span class="p">,</span> <span class="n">HttpGet</span><span class="p">)</span>
 <span class="n">app</span><span class="p">.</span><span class="n">run</span><span class="p">()</span>
