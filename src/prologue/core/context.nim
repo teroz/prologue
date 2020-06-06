@@ -185,7 +185,7 @@ proc setCookie*(ctx: Context, key, value: string, expires: DateTime|Time,
       httpOnly, sameSite)
 
 proc deleteCookie*(ctx: Context, key: string, path = "", domain = "") {.inline.} =
-  ctx.deleteCookie(key = key, path = path, domain = domain)
+  ctx.response.deleteCookie(key = key, path = path, domain = domain)
 
 proc defaultHandler*(ctx: Context) {.async.} =
   ctx.response.code = Http404

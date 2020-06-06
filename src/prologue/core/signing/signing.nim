@@ -247,28 +247,19 @@ proc unsign*(s: Signer | TimedSigner, signedValue: string): string =
 proc unsign*(s: TimedSigner, signedValue: string, max_age: Natural): string =
   var
     res: string
-  #try:
+  
   res = unsign(s, signedValue)
-  #except BadSignatureError as e:
-  #  exception = e
-  #  res = ""
 
   let sep = s.sep
 
   if sep notin signedValue:
-    if exception != nil:
-      raise exception
     raise newException(BadTimeSignatureError, "timestamp missing")
 
   let
     temp = res.rsplit({sep}, maxsplit = 1)
     value = temp[0]
 
-  echo "res is ",res
   var timestamp = temp[1]
-
-  if exception != nil:
-    raise exception
 
   if timestamp.len == 0:
     raise newException(BadTimeSignatureError, "Malformed timestamp")
